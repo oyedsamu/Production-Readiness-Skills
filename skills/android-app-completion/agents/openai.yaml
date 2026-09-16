@@ -1,0 +1,6 @@
+interface:
+  display_name: "Android App Completion"
+  short_description: "Verify Android apps are ready to release"
+  default_prompt: "Use $android-app-completion to build or audit this Android app through release readiness."
+policy:
+  allow_implicit_invocation: true
