@@ -1,0 +1,6 @@
+interface:
+  display_name: "SPA frontend readiness"
+  short_description: "Review spa frontend readiness and release evidence"
+  default_prompt: "Use $spa-web-app-completion to assess this project's release readiness, verify evidence, and report blockers."
+policy:
+  allow_implicit_invocation: true

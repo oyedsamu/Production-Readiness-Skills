@@ -1,0 +1,6 @@
+interface:
+  display_name: "Native iOS readiness"
+  short_description: "Review native ios readiness and release evidence"
+  default_prompt: "Use $ios-app-completion to assess this project's release readiness, verify evidence, and report blockers."
+policy:
+  allow_implicit_invocation: true

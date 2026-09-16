@@ -1,0 +1,6 @@
+interface:
+  display_name: "GraphQL API readiness"
+  short_description: "Review graphql api readiness and release evidence"
+  default_prompt: "Use $graphql-api-completion to assess this project's release readiness, verify evidence, and report blockers."
+policy:
+  allow_implicit_invocation: true

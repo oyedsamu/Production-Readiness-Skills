@@ -1,0 +1,6 @@
+interface:
+  display_name: "Kotlin Multiplatform readiness"
+  short_description: "Review kotlin multiplatform readiness and release evidence"
+  default_prompt: "Use $kmp-project-completion to assess this project's release readiness, verify evidence, and report blockers."
+policy:
+  allow_implicit_invocation: true

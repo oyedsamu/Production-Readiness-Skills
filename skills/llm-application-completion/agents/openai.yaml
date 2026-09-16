@@ -1,0 +1,6 @@
+interface:
+  display_name: "LLM application readiness"
+  short_description: "Review llm application readiness and release evidence"
+  default_prompt: "Use $llm-application-completion to assess this project's release readiness, verify evidence, and report blockers."
+policy:
+  allow_implicit_invocation: true

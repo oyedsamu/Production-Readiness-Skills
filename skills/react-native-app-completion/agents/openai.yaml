@@ -1,0 +1,6 @@
+interface:
+  display_name: "React Native readiness"
+  short_description: "Review react native readiness and release evidence"
+  default_prompt: "Use $react-native-app-completion to assess this project's release readiness, verify evidence, and report blockers."
+policy:
+  allow_implicit_invocation: true

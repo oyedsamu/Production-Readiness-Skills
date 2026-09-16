@@ -1,0 +1,6 @@
+interface:
+  display_name: "Browser extension readiness"
+  short_description: "Review browser extension readiness and release evidence"
+  default_prompt: "Use $browser-extension-completion to assess this project's release readiness, verify evidence, and report blockers."
+policy:
+  allow_implicit_invocation: true

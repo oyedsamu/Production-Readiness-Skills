@@ -1,0 +1,6 @@
+interface:
+  display_name: "Event and worker readiness"
+  short_description: "Review event and worker readiness and release evidence"
+  default_prompt: "Use $event-driven-system-completion to assess this project's release readiness, verify evidence, and report blockers."
+policy:
+  allow_implicit_invocation: true

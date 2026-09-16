@@ -1,0 +1,6 @@
+interface:
+  display_name: "Serverless and edge readiness"
+  short_description: "Review serverless and edge readiness and release evidence"
+  default_prompt: "Use $serverless-system-completion to assess this project's release readiness, verify evidence, and report blockers."
+policy:
+  allow_implicit_invocation: true

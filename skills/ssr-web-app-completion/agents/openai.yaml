@@ -1,0 +1,6 @@
+interface:
+  display_name: "SSR web app readiness"
+  short_description: "Review ssr web app readiness and release evidence"
+  default_prompt: "Use $ssr-web-app-completion to assess this project's release readiness, verify evidence, and report blockers."
+policy:
+  allow_implicit_invocation: true

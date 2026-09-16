@@ -1,0 +1,6 @@
+interface:
+  display_name: "CLI tool readiness"
+  short_description: "Review cli tool readiness and release evidence"
+  default_prompt: "Use $cli-tool-completion to assess this project's release readiness, verify evidence, and report blockers."
+policy:
+  allow_implicit_invocation: true

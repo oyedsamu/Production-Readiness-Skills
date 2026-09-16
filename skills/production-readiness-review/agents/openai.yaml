@@ -1,0 +1,6 @@
+interface:
+  display_name: "Production readiness review"
+  short_description: "Coordinate readiness checks across project types"
+  default_prompt: "Use $production-readiness-review to identify the project's release units, apply relevant checks, and report evidence and blockers."
+policy:
+  allow_implicit_invocation: true

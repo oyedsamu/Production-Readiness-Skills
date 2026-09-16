@@ -1,0 +1,117 @@
+[
+  {
+    "name": "production-readiness-review",
+    "title": "Production readiness review",
+    "scope": "mixed projects, monorepos, and project-type selection"
+  },
+  {
+    "name": "android-app-completion",
+    "title": "Native Android readiness",
+    "scope": "native Android apps using Kotlin or Java, Jetpack Compose, or Views"
+  },
+  {
+    "name": "website-completion",
+    "title": "Website readiness",
+    "scope": "public websites, landing pages, static sites, and general web launch reviews"
+  },
+  {
+    "name": "backend-system-completion",
+    "title": "Backend API readiness",
+    "scope": "HTTP/REST or gRPC APIs, modular monoliths, and backend services"
+  },
+  {
+    "name": "flutter-app-completion",
+    "title": "Flutter app readiness",
+    "scope": "Flutter applications, including Android Flutter, iOS, web, and desktop targets"
+  },
+  {
+    "name": "kmp-project-completion",
+    "title": "Kotlin Multiplatform readiness",
+    "scope": "Kotlin Multiplatform shared libraries and applications, including Compose Multiplatform"
+  },
+  {
+    "name": "react-native-app-completion",
+    "title": "React Native readiness",
+    "scope": "React Native Android/iOS applications, including Expo and bare workflows"
+  },
+  {
+    "name": "ios-app-completion",
+    "title": "Native iOS readiness",
+    "scope": "native iOS and iPadOS applications using Swift, SwiftUI, or UIKit"
+  },
+  {
+    "name": "spa-web-app-completion",
+    "title": "SPA frontend readiness",
+    "scope": "client-rendered React, Vue, Angular, or Svelte applications and authenticated dashboards"
+  },
+  {
+    "name": "ssr-web-app-completion",
+    "title": "SSR web app readiness",
+    "scope": "server-rendered and full-stack web apps using Next.js, Nuxt, SvelteKit, or similar frameworks"
+  },
+  {
+    "name": "pwa-completion",
+    "title": "PWA readiness",
+    "scope": "installable progressive web apps and web applications with offline/service-worker behavior"
+  },
+  {
+    "name": "cms-site-completion",
+    "title": "CMS and content site readiness",
+    "scope": "WordPress, headless CMS, and editorial publishing sites"
+  },
+  {
+    "name": "graphql-api-completion",
+    "title": "GraphQL API readiness",
+    "scope": "GraphQL services, federated graphs, and subscription APIs"
+  },
+  {
+    "name": "event-driven-system-completion",
+    "title": "Event and worker readiness",
+    "scope": "message brokers, queue workers, scheduled jobs, streaming services, and event-driven backends"
+  },
+  {
+    "name": "serverless-system-completion",
+    "title": "Serverless and edge readiness",
+    "scope": "serverless functions, edge workers, and managed event-triggered applications"
+  },
+  {
+    "name": "data-pipeline-completion",
+    "title": "Data pipeline readiness",
+    "scope": "batch/streaming ETL or ELT, analytics transformations, ingestion, and scheduled data products"
+  },
+  {
+    "name": "llm-application-completion",
+    "title": "LLM application readiness",
+    "scope": "LLM applications, RAG systems, tool-using agents, and generative AI APIs"
+  },
+  {
+    "name": "ml-system-completion",
+    "title": "ML system readiness",
+    "scope": "predictive ML training pipelines, batch scoring, and online inference services"
+  },
+  {
+    "name": "desktop-app-completion",
+    "title": "Desktop app readiness",
+    "scope": "Electron, Tauri, and native Windows/macOS/Linux desktop applications"
+  },
+  {
+    "name": "cli-tool-completion",
+    "title": "CLI tool readiness",
+    "scope": "command-line tools, developer utilities, and shell-facing automation"
+  },
+  {
+    "name": "library-package-completion",
+    "title": "Library and SDK readiness",
+    "scope": "reusable libraries, SDKs, framework packages, and registry publications"
+  },
+  {
+    "name": "infrastructure-completion",
+    "title": "Infrastructure readiness",
+    "scope": "infrastructure as code, container platforms, Kubernetes deployments, and shared runtime infrastructure"
+  },
+  {
+    "name": "browser-extension-completion",
+    "title": "Browser extension readiness",
+    "scope": "Chrome, Firefox, and other browser extensions with privileged browser APIs"
+  }
+]

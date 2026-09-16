@@ -1,0 +1,6 @@
+interface:
+  display_name: "Library and SDK readiness"
+  short_description: "Review library and sdk readiness and release evidence"
+  default_prompt: "Use $library-package-completion to assess this project's release readiness, verify evidence, and report blockers."
+policy:
+  allow_implicit_invocation: true

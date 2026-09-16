@@ -1,6 +1,6 @@
 interface:
-  display_name: "Website Completion"
-  short_description: "Verify websites are truly ready to launch"
-  default_prompt: "Use $website-completion to build or audit this website through production launch readiness."
+  display_name: "Website readiness"
+  short_description: "Review website readiness and release evidence"
+  default_prompt: "Use $website-completion to assess this project's release readiness, verify evidence, and report blockers."
 policy:
   allow_implicit_invocation: true
