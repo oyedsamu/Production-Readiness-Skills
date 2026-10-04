@@ -1,0 +1,7 @@
+interface:
+  display_name: "Anti-AI-Slop UI Design"
+  short_description: "Design distinctive interfaces and verify visual quality"
+  default_prompt: "Use $anti-ai-slop-ui-design to build a distinctive, usable interface and review realistic screenshots."
+
+policy:
+  allow_implicit_invocation: true

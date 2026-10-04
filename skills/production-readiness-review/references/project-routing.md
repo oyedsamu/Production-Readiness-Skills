@@ -39,3 +39,8 @@ Choose by executable/deployable behavior, not only by programming language. This
 - A desktop client that embeds web UI needs desktop privilege/update checks plus applicable web interaction checks. A package consumed by that app needs an isolated consumer installation test.
 
 When the project does not fit a listed class, describe the uncovered runtime and derive its failure cases from the project and official sources. Do not force a checklist fit or label unsupported coverage complete.
+
+
+## Visual design companion
+
+Apply `anti-ai-slop-ui-design` alongside the relevant UI track for design/build work. Preserve existing design systems; scale exploration to the affected interface. In audit-only mode, inspect and report without changing UI. Keep visual readiness separate from release readiness. Skip this companion for service-only projects.

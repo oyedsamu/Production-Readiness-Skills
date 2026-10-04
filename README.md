@@ -1,8 +1,12 @@
 # Production Readiness Skills
 
-23 installable skills for reviewing, finishing, and releasing software. Each skill asks for evidence from the actual candidate, tests failure and recovery paths, and reports what is still unknown.
+24 installable skills for reviewing, finishing, and releasing software. Each skill asks for evidence from the actual candidate, tests failure and recovery paths, and reports what is still unknown.
 
 Use a focused skill for a known project type, or start with `production-readiness-review` for a monorepo or mixed system. The original `android-app-completion`, `backend-system-completion`, and `website-completion` names remain available. Android's original name is the native Kotlin/Java track.
+
+## Design companion
+
+Use [`anti-ai-slop-ui-design`](skills/anti-ai-slop-ui-design/SKILL.md) when designing or building an interface. It requires three visual directions, a coherent selected language, realistic screenshots, critique, and refinement alongside the relevant readiness track. Its Python evidence checker tracks review completeness; visual judgment remains manual. It preserves established brand systems and scopes small edits to the affected interface.
 
 ## Choose a skill
 
@@ -13,6 +17,8 @@ Use a focused skill for a known project type, or start with `production-readines
 | [`production-readiness-review`](skills/production-readiness-review/SKILL.md) | mixed projects, monorepos, and project-type selection |
 
 ### Mobile
+
+All five mobile tracks include store packaging and first-session checks: icon legibility, screenshot accuracy and sequence, onboarding to first value, transparent paid offers when applicable, and the core user flow. Growth experiments are recommendations, not universal release blockers. Shared-library-only KMP releases and non-mobile targets use justified N/A.
 
 | Skill | Use it for |
 | --- | --- |

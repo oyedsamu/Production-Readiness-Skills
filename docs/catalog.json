@@ -113,5 +113,10 @@
     "name": "browser-extension-completion",
     "title": "Browser extension readiness",
     "scope": "Chrome, Firefox, and other browser extensions with privileged browser APIs"
+  },
+  {
+    "name": "anti-ai-slop-ui-design",
+    "title": "Anti-AI-Slop UI Design",
+    "scope": "product-specific UI concept exploration, realistic rendering, critique, and refinement; companion to readiness tracks"
   }
 ]

@@ -91,6 +91,18 @@ class PackageValidationTests(unittest.TestCase):
         sync(self.root)
         self.assertEqual(validate(self.root), [])
 
+    def test_mobile_reference_is_scoped_and_drift_is_detected(self):
+        mobile = self.root / "skills/android-app-completion"
+        shutil.copytree(ROOT / "skills/android-app-completion", mobile)
+        target = mobile / "references/mobile-store-readiness.md"
+        target.write_text("outdated guidance\n")
+        stale = sync(self.root, check=True)
+        self.assertIn(str(target.relative_to(self.root)), stale)
+        self.assertEqual(target.read_text(), "outdated guidance\n")
+        sync(self.root)
+        self.assertEqual(target.read_bytes(), (self.root / "templates/mobile-store-readiness.md").read_bytes())
+        self.assertFalse((self.skill / "references/mobile-store-readiness.md").exists())
+
     def test_duplicate_or_missing_catalog_entry_fails(self):
         catalog = self.root / "docs/catalog.json"
         catalog.write_text(json.dumps([{"name": self.skill.name}] * 2))

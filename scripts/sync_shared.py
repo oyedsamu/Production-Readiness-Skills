@@ -5,12 +5,15 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SHARED = ("review-method.md", "reporting.md", "domain-checks.md")
+MOBILE = frozenset({"android-app-completion", "ios-app-completion", "flutter-app-completion",
+                    "react-native-app-completion", "kmp-project-completion"})
 
 
 def sync(root=ROOT, check=False):
     stale = []
     for skill in sorted((root / "skills").glob("*/SKILL.md")):
-        for name in SHARED:
+        references = SHARED + (("mobile-store-readiness.md",) if skill.parent.name in MOBILE else ())
+        for name in references:
             source = root / "templates" / name
             destination = skill.parent / "references" / name
             if not destination.exists() or destination.read_bytes() != source.read_bytes():

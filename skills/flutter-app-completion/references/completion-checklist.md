@@ -25,6 +25,10 @@ Apply the [review method](review-method.md) before evaluating these checks. Spli
 - Run meaningful Dart unit/widget tests and integration tests through plugin-dependent critical journeys. Capture target-specific evidence; emulated plugins do not prove native integration.
 - Preserve obfuscation/symbol mapping and native symbols; verify diagnostic readability and SDK consent. Document compatibility across app/backend versions and pause/forward-fix plans.
 
+## Store packaging and first-session gate
+
+Apply [mobile-store-readiness.md](mobile-store-readiness.md) to each shipping mobile host: inspect thumbnail icons, truthful screenshot sequences, first useful outcome, clear and correct paid offers when applicable, and the main task flow. Keep optional conversion experiments separate from release blockers. Record platform/locale/candidate evidence and justified N/A for library-only, non-mobile, non-store, or free-app sections.
+
 ## Evidence starting points
 
 Inspect the project-defined build/test/release commands and CI before running them. Capture the actual candidate artifact, meaningful tests of the critical journey and its failure path, platform/runtime matrix, and recovery evidence. Static inspection and execution results must remain distinguishable.

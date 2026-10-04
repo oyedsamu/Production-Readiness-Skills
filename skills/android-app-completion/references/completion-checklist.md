@@ -38,6 +38,10 @@ Apply the [review method](review-method.md) before evaluating these checks. Spli
 - Record CI release commands, artifact identity, key recovery owner, staged rollout controls, backend compatibility with old clients, and a forward-fix path. Verify a Play-distributed test install when Play is the intended channel.
 - Verify a safe diagnostic reaches the intended monitoring project with correct version and no sensitive payload. Separate store submission, store approval, rollout, and device verification as distinct evidence.
 
+## Store packaging and first-session gate
+
+Apply [mobile-store-readiness.md](mobile-store-readiness.md) to each shipping mobile host: inspect thumbnail icons, truthful screenshot sequences, first useful outcome, clear and correct paid offers when applicable, and the main task flow. Keep optional conversion experiments separate from release blockers. Record platform/locale/candidate evidence and justified N/A for library-only, non-mobile, non-store, or free-app sections.
+
 ## Evidence starting points
 
 Inspect the project-defined build/test/release commands and CI before running them. Capture the actual candidate artifact, meaningful tests of the critical journey and its failure path, platform/runtime matrix, and recovery evidence. Static inspection and execution results must remain distinguishable.
