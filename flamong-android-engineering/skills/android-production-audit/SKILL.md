@@ -1,32 +1,20 @@
 ---
 name: android-production-audit
-description: Use when working on Android production audit, implementing or reviewing related Kotlin, Compose, Gradle, or Android application behavior.
+description: Audit a native Android candidate for release blockers and missing evidence; use android-app-completion for the broader readiness track when available.
 ---
 # Production Audit
 
-## Goal
-Deliver correct, maintainable Android changes with evidence, not unsupported completion claims.
+## Scope
+Start in read-only assessment mode. Do not edit project files, install new dependencies in the target checkout, or remediate findings unless the user requests those actions. Existing safe checks and isolated reproductions are allowed. A review request does not authorize posting to external services or publication.
 
 ## Workflow
-1. Inspect the existing repository, its modules, build configuration, conventions and relevant tests before proposing changes.
-2. Identify the user-visible requirement, constraints, affected layers, compatibility needs and security implications.
-3. Prefer the smallest coherent implementation that follows existing project conventions. Document deviations and trade-offs.
-4. Implement explicit error, loading, empty, cancellation and recovery behavior where relevant. Avoid silently swallowing failures.
-5. Add focused automated tests for new behavior, failure modes and regressions. Do not claim tests passed without running them.
-6. Run the applicable Gradle, lint, test and device checks available in the environment. Report exact commands and results.
-7. Summarize changed files, behavior, risks, evidence, and any checks that could not be run.
-
-## Domain-specific checks
-- Use the official Android/Kotlin API contracts and the repository’s established patterns.
-- Verify edge cases, lifecycle correctness, cancellation, accessibility and testability where applicable.
+1. Identify the candidate commit/artifact and inventory core flows, stored data, permissions, background work and release configuration. Keep the audit read-only unless remediation is requested.
+2. Exercise the main flow and recovery from network failure, process recreation and denied permissions in an isolated environment. Inspect release signing/minification, accessibility and relevant security boundaries.
+3. Classify observed issues by impact and distinguish missing evidence. Route to existing readiness guidance when available, but keep a usable findings report when installed independently.
 
 ## Verification evidence
-- Changed paths and rationale.
-- Commands run with pass/fail/not-run status.
-- Tests added or updated, with uncovered risks.
-- No fabricated benchmark, security, device or release results.
+Report per-check PASS, FAIL, UNVERIFIED or justified N/A with candidate, command/procedure and observed result. Required failures or unverified release checks prevent a ready verdict. Return findings and proposed remediation without implementing, uploading or publishing.
+Record the exact command or manual procedure, candidate/build and environment, observed result, and evidence location. Mark unavailable checks as not run; never invent device, benchmark, security or release outcomes.
 
 ## References
-- https://developer.android.com/
-- https://developer.android.com/topic/architecture
-- https://developer.android.com/training/testing
+Read the [topic-specific official guidance](https://developer.android.com/studio/publish/preparing) for APIs and version-sensitive details relevant to the installed toolchain.

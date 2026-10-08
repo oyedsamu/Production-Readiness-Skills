@@ -1,32 +1,20 @@
 ---
 name: android-compose-ui
-description: Use when working on Android compose ui, implementing or reviewing related Kotlin, Compose, Gradle, or Android application behavior.
+description: Implement or revise Jetpack Compose UI, including state ownership, effects, semantics and adaptive layout.
 ---
-# Compose Ui
+# Compose UI
 
-## Goal
-Deliver correct, maintainable Android changes with evidence, not unsupported completion claims.
+## Scope
+Follow the user’s requested mode: inspection stays read-only; implementation changes only the requested behavior. Preserve existing project conventions and prior authorization. Publishing, production changes and external messages require their own authorization.
 
 ## Workflow
-1. Inspect the existing repository, its modules, build configuration, conventions and relevant tests before proposing changes.
-2. Identify the user-visible requirement, constraints, affected layers, compatibility needs and security implications.
-3. Prefer the smallest coherent implementation that follows existing project conventions. Document deviations and trade-offs.
-4. Implement explicit error, loading, empty, cancellation and recovery behavior where relevant. Avoid silently swallowing failures.
-5. Add focused automated tests for new behavior, failure modes and regressions. Do not claim tests passed without running them.
-6. Run the applicable Gradle, lint, test and device checks available in the environment. Report exact commands and results.
-7. Summarize changed files, behavior, risks, evidence, and any checks that could not be run.
-
-## Domain-specific checks
-- Use the official Android/Kotlin API contracts and the repository’s established patterns.
-- Verify edge cases, lifecycle correctness, cancellation, accessibility and testability where applicable.
+1. Separate screen state ownership from reusable composables; expose values and callbacks instead of giving every child a ViewModel.
+2. Key remembered state and effects to their actual lifetime. Keep side effects out of composition; use saveable state only for restorable UI values rather than credentials or whole repositories.
+3. Exercise loading, empty, error and populated states with long content, larger fonts and different widths. Give actionable controls meaningful semantics and avoid duplicate event handling during recomposition.
 
 ## Verification evidence
-- Changed paths and rationale.
-- Commands run with pass/fail/not-run status.
-- Tests added or updated, with uncovered risks.
-- No fabricated benchmark, security, device or release results.
+Recompose and recreate the screen; verify callbacks fire once per action and intended state survives recreation. Capture layout and accessibility observations for the affected states.
+Record the exact command or manual procedure, candidate/build and environment, observed result, and evidence location. Mark unavailable checks as not run; never invent device, benchmark, security or release outcomes.
 
 ## References
-- https://developer.android.com/
-- https://developer.android.com/topic/architecture
-- https://developer.android.com/training/testing
+Read the [topic-specific official guidance](https://developer.android.com/develop/ui/compose/state) for APIs and version-sensitive details relevant to the installed toolchain.

@@ -1,32 +1,20 @@
 ---
 name: android-play-store
-description: Use when working on Android play store, implementing or reviewing related Kotlin, Compose, Gradle, or Android application behavior.
+description: Prepare or review Android Play submission artifacts, declarations and store-specific requirements without publishing by default.
 ---
 # Play Store
 
-## Goal
-Deliver correct, maintainable Android changes with evidence, not unsupported completion claims.
+## Scope
+Start in read-only assessment mode. Do not edit project files, install new dependencies in the target checkout, or remediate findings unless the user requests those actions. Existing safe checks and isolated reproductions are allowed. A review request does not authorize posting to external services or publication.
 
 ## Workflow
-1. Inspect the existing repository, its modules, build configuration, conventions and relevant tests before proposing changes.
-2. Identify the user-visible requirement, constraints, affected layers, compatibility needs and security implications.
-3. Prefer the smallest coherent implementation that follows existing project conventions. Document deviations and trade-offs.
-4. Implement explicit error, loading, empty, cancellation and recovery behavior where relevant. Avoid silently swallowing failures.
-5. Add focused automated tests for new behavior, failure modes and regressions. Do not claim tests passed without running them.
-6. Run the applicable Gradle, lint, test and device checks available in the environment. Report exact commands and results.
-7. Summarize changed files, behavior, risks, evidence, and any checks that could not be run.
-
-## Domain-specific checks
-- Use the official Android/Kotlin API contracts and the repository’s established patterns.
-- Verify edge cases, lifecycle correctness, cancellation, accessibility and testability where applicable.
+1. Identify the intended track and artifact, then verify current official requirements for that submission rather than freezing SDK deadlines in the skill.
+2. Compare permissions, SDK data collection and actual behavior with Data safety and other applicable declarations. Check signing, version code and package identity against the intended app.
+3. Review listing assets and user journey for accuracy; document any unavailable Console checks. Keep upload, submission and rollout distinct from local packaging and require user authorization for those actions.
 
 ## Verification evidence
-- Changed paths and rationale.
-- Commands run with pass/fail/not-run status.
-- Tests added or updated, with uncovered risks.
-- No fabricated benchmark, security, device or release results.
+Record requirement sources and inspection date, artifact identity and declaration gaps. Confirm Console state only with access; return unresolved submission blockers without claiming publication.
+Record the exact command or manual procedure, candidate/build and environment, observed result, and evidence location. Mark unavailable checks as not run; never invent device, benchmark, security or release outcomes.
 
 ## References
-- https://developer.android.com/
-- https://developer.android.com/topic/architecture
-- https://developer.android.com/training/testing
+Read the [topic-specific official guidance](https://support.google.com/googleplay/android-developer/answer/9859152) for APIs and version-sensitive details relevant to the installed toolchain.

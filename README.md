@@ -129,6 +129,7 @@ python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements-dev.txt
 .venv/bin/python scripts/sync_shared.py --check
 .venv/bin/python scripts/validate_skills.py
+.venv/bin/python scripts/validate_android_skills.py
 .venv/bin/python -m unittest discover -s tests -v
 ```
 

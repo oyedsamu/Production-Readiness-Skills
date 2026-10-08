@@ -1,32 +1,20 @@
 ---
 name: android-debug-issue
-description: Use when working on Android debug issue, implementing or reviewing related Kotlin, Compose, Gradle, or Android application behavior.
+description: Investigate and fix a reproducible Android bug using lifecycle, state, logs and a regression check.
 ---
 # Debug Issue
 
-## Goal
-Deliver correct, maintainable Android changes with evidence, not unsupported completion claims.
+## Scope
+Follow the user’s requested mode: inspection stays read-only; implementation changes only the requested behavior. Preserve existing project conventions and prior authorization. Publishing, production changes and external messages require their own authorization.
 
 ## Workflow
-1. Inspect the existing repository, its modules, build configuration, conventions and relevant tests before proposing changes.
-2. Identify the user-visible requirement, constraints, affected layers, compatibility needs and security implications.
-3. Prefer the smallest coherent implementation that follows existing project conventions. Document deviations and trade-offs.
-4. Implement explicit error, loading, empty, cancellation and recovery behavior where relevant. Avoid silently swallowing failures.
-5. Add focused automated tests for new behavior, failure modes and regressions. Do not claim tests passed without running them.
-6. Run the applicable Gradle, lint, test and device checks available in the environment. Report exact commands and results.
-7. Summarize changed files, behavior, risks, evidence, and any checks that could not be run.
-
-## Domain-specific checks
-- Use the official Android/Kotlin API contracts and the repository’s established patterns.
-- Verify edge cases, lifecycle correctness, cancellation, accessibility and testability where applicable.
+1. Capture expected/actual behavior, build, device/API, steps and frequency. Reduce the case and collect redacted logs or traces before guessing at a fix.
+2. Trace the failing transition to its owning component. Form one hypothesis and choose a discriminating experiment; check lifecycle, cancellation and concurrency when symptoms are intermittent.
+3. For requested remediation, change the smallest cause and add a regression assertion. For investigation-only requests, report the hypothesis and evidence without editing the app.
 
 ## Verification evidence
-- Changed paths and rationale.
-- Commands run with pass/fail/not-run status.
-- Tests added or updated, with uncovered risks.
-- No fabricated benchmark, security, device or release results.
+Rerun original reproduction and a nearby success path. Show the regression test failing before and passing after when feasible; mark an unreproduced bug unresolved rather than claiming a fix.
+Record the exact command or manual procedure, candidate/build and environment, observed result, and evidence location. Mark unavailable checks as not run; never invent device, benchmark, security or release outcomes.
 
 ## References
-- https://developer.android.com/
-- https://developer.android.com/topic/architecture
-- https://developer.android.com/training/testing
+Read the [topic-specific official guidance](https://developer.android.com/studio/debug) for APIs and version-sensitive details relevant to the installed toolchain.

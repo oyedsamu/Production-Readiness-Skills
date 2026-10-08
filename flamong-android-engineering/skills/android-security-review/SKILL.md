@@ -1,33 +1,20 @@
 ---
 name: android-security-review
-description: Use when working on Android security review, implementing or reviewing related Kotlin, Compose, Gradle, or Android application behavior.
+description: Audit Android attack surfaces and security controls against a scoped threat model; review is read-only by default.
 ---
 # Security Review
 
-## Goal
-Deliver correct, maintainable Android changes with evidence, not unsupported completion claims.
+## Scope
+Start in read-only assessment mode. Do not edit project files, install new dependencies in the target checkout, or remediate findings unless the user requests those actions. Existing safe checks and isolated reproductions are allowed. A review request does not authorize posting to external services or publication.
 
 ## Workflow
-1. Inspect the existing repository, its modules, build configuration, conventions and relevant tests before proposing changes.
-2. Identify the user-visible requirement, constraints, affected layers, compatibility needs and security implications.
-3. Prefer the smallest coherent implementation that follows existing project conventions. Document deviations and trade-offs.
-4. Implement explicit error, loading, empty, cancellation and recovery behavior where relevant. Avoid silently swallowing failures.
-5. Add focused automated tests for new behavior, failure modes and regressions. Do not claim tests passed without running them.
-6. Run the applicable Gradle, lint, test and device checks available in the environment. Report exact commands and results.
-7. Summarize changed files, behavior, risks, evidence, and any checks that could not be run.
-
-## Domain-specific checks
-- Review OWASP MASVS and MASTG controls proportionate to threat model.
-- Check exported components, deep links, WebViews, storage, logs, credentials, transport and authorization.
-- Never treat client-side controls as a substitute for server-side authorization.
+1. Identify assets, trust boundaries and attacker capabilities; map relevant MASVS controls to manifest, IPC, links, WebViews, storage, transport and backend authorization.
+2. Inspect exported components and URI/input validation. Exercise safe malformed inputs in an isolated app or fixture; avoid real credentials or production exploitation.
+3. Separate observed vulnerabilities from missing evidence. Client-side gates do not prove server authorization; report exact preconditions, impact and a proportionate remediation.
 
 ## Verification evidence
-- Changed paths and rationale.
-- Commands run with pass/fail/not-run status.
-- Tests added or updated, with uncovered risks.
-- No fabricated benchmark, security, device or release results.
+Produce findings with path/line, reproducible input, observed result and expected control. Mark inaccessible server/device checks unverified; do not certify security from a checklist.
+Record the exact command or manual procedure, candidate/build and environment, observed result, and evidence location. Mark unavailable checks as not run; never invent device, benchmark, security or release outcomes.
 
 ## References
-- https://developer.android.com/
-- https://developer.android.com/topic/architecture
-- https://developer.android.com/training/testing
+Read the [topic-specific official guidance](https://mas.owasp.org/MASVS/) for APIs and version-sensitive details relevant to the installed toolchain.

@@ -1,32 +1,20 @@
 ---
 name: android-performance
-description: Use when working on Android performance, implementing or reviewing related Kotlin, Compose, Gradle, or Android application behavior.
+description: Investigate or measure Android startup, rendering, memory, battery or network regressions.
 ---
 # Performance
 
-## Goal
-Deliver correct, maintainable Android changes with evidence, not unsupported completion claims.
+## Scope
+Follow the user’s requested mode: inspection stays read-only; implementation changes only the requested behavior. Preserve existing project conventions and prior authorization. Publishing, production changes and external messages require their own authorization.
 
 ## Workflow
-1. Inspect the existing repository, its modules, build configuration, conventions and relevant tests before proposing changes.
-2. Identify the user-visible requirement, constraints, affected layers, compatibility needs and security implications.
-3. Prefer the smallest coherent implementation that follows existing project conventions. Document deviations and trade-offs.
-4. Implement explicit error, loading, empty, cancellation and recovery behavior where relevant. Avoid silently swallowing failures.
-5. Add focused automated tests for new behavior, failure modes and regressions. Do not claim tests passed without running them.
-6. Run the applicable Gradle, lint, test and device checks available in the environment. Report exact commands and results.
-7. Summarize changed files, behavior, risks, evidence, and any checks that could not be run.
-
-## Domain-specific checks
-- Measure startup, rendering, memory, battery and network impact before optimization.
-- Use Macrobenchmark and Baseline Profiles when supported; compare before/after.
+1. Identify a user-visible slow path and a baseline on a stated device and build variant. Measure release-like code rather than using debug timing as a release verdict.
+2. Use traces or benchmarks to locate the cost before optimizing. Control fixture data, thermal conditions and repeated runs; compare distributions instead of one favorable sample.
+3. Choose the appropriate measurement: startup/rendering benchmarks, memory profiling or work/network analysis. Evaluate Baseline Profiles when relevant and supported by the existing build.
 
 ## Verification evidence
-- Changed paths and rationale.
-- Commands run with pass/fail/not-run status.
-- Tests added or updated, with uncovered risks.
-- No fabricated benchmark, security, device or release results.
+Capture before/after measurements with build, device, scenario and variability. Confirm behavior is preserved and report inconclusive results without claiming a speedup.
+Record the exact command or manual procedure, candidate/build and environment, observed result, and evidence location. Mark unavailable checks as not run; never invent device, benchmark, security or release outcomes.
 
 ## References
-- https://developer.android.com/
-- https://developer.android.com/topic/architecture
-- https://developer.android.com/training/testing
+Read the [topic-specific official guidance](https://developer.android.com/topic/performance/benchmarking/macrobenchmark-overview) for APIs and version-sensitive details relevant to the installed toolchain.

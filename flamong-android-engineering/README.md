@@ -15,49 +15,52 @@ Copy selected `skills/android-*` directories into the target repository's `.agen
 ## Catalog
 
 ### Architecture
-- `android-architecture`
-- `android-modularization`
-- `android-dependency-injection`
-- `android-legacy-migration`
+- [`android-architecture`](skills/android-architecture/SKILL.md)
+- [`android-modularization`](skills/android-modularization/SKILL.md)
+- [`android-dependency-injection`](skills/android-dependency-injection/SKILL.md)
+- [`android-legacy-migration`](skills/android-legacy-migration/SKILL.md)
 
 ### Implementation
-- `android-compose-ui`
-- `android-state-management`
-- `android-coroutines-flow`
-- `android-navigation`
-- `android-error-handling`
+- [`android-compose-ui`](skills/android-compose-ui/SKILL.md)
+- [`android-state-management`](skills/android-state-management/SKILL.md)
+- [`android-coroutines-flow`](skills/android-coroutines-flow/SKILL.md)
+- [`android-navigation`](skills/android-navigation/SKILL.md)
+- [`android-error-handling`](skills/android-error-handling/SKILL.md)
 
 ### Data
-- `android-networking`
-- `android-persistence`
-- `android-offline-sync`
-- `android-data-security`
+- [`android-networking`](skills/android-networking/SKILL.md)
+- [`android-persistence`](skills/android-persistence/SKILL.md)
+- [`android-offline-sync`](skills/android-offline-sync/SKILL.md)
+- [`android-data-security`](skills/android-data-security/SKILL.md)
 
 ### Quality
-- `android-unit-testing`
-- `android-compose-testing`
-- `android-integration-testing`
-- `android-performance`
-- `android-accessibility`
-- `android-static-analysis`
+- [`android-unit-testing`](skills/android-unit-testing/SKILL.md)
+- [`android-compose-testing`](skills/android-compose-testing/SKILL.md)
+- [`android-integration-testing`](skills/android-integration-testing/SKILL.md)
+- [`android-performance`](skills/android-performance/SKILL.md)
+- [`android-accessibility`](skills/android-accessibility/SKILL.md)
+- [`android-static-analysis`](skills/android-static-analysis/SKILL.md)
 
 ### Production
-- `android-security-review`
-- `android-privacy`
-- `android-observability`
-- `android-release-readiness`
-- `android-play-store`
+- [`android-security-review`](skills/android-security-review/SKILL.md)
+- [`android-privacy`](skills/android-privacy/SKILL.md)
+- [`android-observability`](skills/android-observability/SKILL.md)
+- [`android-release-readiness`](skills/android-release-readiness/SKILL.md)
+- [`android-play-store`](skills/android-play-store/SKILL.md)
 
 ### Delivery
-- `android-gradle-build-logic`
-- `android-ci-cd`
-- `android-dependency-upgrades`
+- [`android-gradle-build-logic`](skills/android-gradle-build-logic/SKILL.md)
+- [`android-ci-cd`](skills/android-ci-cd/SKILL.md)
+- [`android-dependency-upgrades`](skills/android-dependency-upgrades/SKILL.md)
 
 ### Workflows
-- `android-create-feature`
-- `android-debug-issue`
-- `android-review-pull-request`
-- `android-production-audit`
+- [`android-create-feature`](skills/android-create-feature/SKILL.md)
+- [`android-debug-issue`](skills/android-debug-issue/SKILL.md)
+- [`android-review-pull-request`](skills/android-review-pull-request/SKILL.md)
+- [`android-production-audit`](skills/android-production-audit/SKILL.md)
+
+## Validation
+Run `python scripts/validate_android_skills.py` from the repository root after installing `requirements-dev.txt`. CI runs this check alongside the original catalog validator and its tests. Structural validation does not establish agent behavior; see [VALIDATION.md](VALIDATION.md) and [review scenarios](SCENARIOS.md).
 
 ## Suggested baseline gates
 `./gradlew lint testDebugUnitTest assembleDebug` (adapt tasks to modules/flavors). Add instrumented tests, benchmarks, dependency checks, security review, accessibility audits and release checks according to the change and available infrastructure.

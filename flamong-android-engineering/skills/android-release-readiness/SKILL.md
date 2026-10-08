@@ -1,32 +1,20 @@
 ---
 name: android-release-readiness
-description: Use when working on Android release readiness, implementing or reviewing related Kotlin, Compose, Gradle, or Android application behavior.
+description: Assess an Android release candidate, packaging and rollout preparation; assessment does not authorize publication.
 ---
 # Release Readiness
 
-## Goal
-Deliver correct, maintainable Android changes with evidence, not unsupported completion claims.
+## Scope
+Start in read-only assessment mode. Do not edit project files, install new dependencies in the target checkout, or remediate findings unless the user requests those actions. Existing safe checks and isolated reproductions are allowed. A review request does not authorize posting to external services or publication.
 
 ## Workflow
-1. Inspect the existing repository, its modules, build configuration, conventions and relevant tests before proposing changes.
-2. Identify the user-visible requirement, constraints, affected layers, compatibility needs and security implications.
-3. Prefer the smallest coherent implementation that follows existing project conventions. Document deviations and trade-offs.
-4. Implement explicit error, loading, empty, cancellation and recovery behavior where relevant. Avoid silently swallowing failures.
-5. Add focused automated tests for new behavior, failure modes and regressions. Do not claim tests passed without running them.
-6. Run the applicable Gradle, lint, test and device checks available in the environment. Report exact commands and results.
-7. Summarize changed files, behavior, risks, evidence, and any checks that could not be run.
-
-## Domain-specific checks
-- Verify signed build, versioning, minification, mapping files, crash reporting, rollout and rollback.
-- Never claim Play Console or production verification without access.
+1. Identify the candidate commit, artifact, variant, application ID and signing configuration. Evaluate the release build rather than assuming a debug build proves release behavior.
+2. Install the release-like artifact and upgrade from the previous release with existing data. Exercise minified paths, startup, core flow, permissions and offline recovery; inspect mapping/symbol artifacts.
+3. Record blockers, unknown checks and conditional N/A reasons. Verify rollout ownership and a feasible recovery plan; consider data compatibility and store constraints before promising rollback.
 
 ## Verification evidence
-- Changed paths and rationale.
-- Commands run with pass/fail/not-run status.
-- Tests added or updated, with uncovered risks.
-- No fabricated benchmark, security, device or release results.
+Report candidate/environment and each required check as PASS, FAIL, UNVERIFIED or justified N/A. Missing required evidence blocks a ready verdict; do not upload, publish or change rollout during assessment.
+Record the exact command or manual procedure, candidate/build and environment, observed result, and evidence location. Mark unavailable checks as not run; never invent device, benchmark, security or release outcomes.
 
 ## References
-- https://developer.android.com/
-- https://developer.android.com/topic/architecture
-- https://developer.android.com/training/testing
+Read the [topic-specific official guidance](https://developer.android.com/studio/publish/preparing) for APIs and version-sensitive details relevant to the installed toolchain.

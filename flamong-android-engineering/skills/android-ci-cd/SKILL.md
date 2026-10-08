@@ -1,32 +1,20 @@
 ---
 name: android-ci-cd
-description: Use when working on Android ci cd, implementing or reviewing related Kotlin, Compose, Gradle, or Android application behavior.
+description: Implement or review Android CI build/test pipelines, artifact handling and separately authorized release jobs.
 ---
-# Ci Cd
+# CI/CD
 
-## Goal
-Deliver correct, maintainable Android changes with evidence, not unsupported completion claims.
+## Scope
+Follow the user’s requested mode: inspection stays read-only; implementation changes only the requested behavior. Preserve existing project conventions and prior authorization. Publishing, production changes and external messages require their own authorization.
 
 ## Workflow
-1. Inspect the existing repository, its modules, build configuration, conventions and relevant tests before proposing changes.
-2. Identify the user-visible requirement, constraints, affected layers, compatibility needs and security implications.
-3. Prefer the smallest coherent implementation that follows existing project conventions. Document deviations and trade-offs.
-4. Implement explicit error, loading, empty, cancellation and recovery behavior where relevant. Avoid silently swallowing failures.
-5. Add focused automated tests for new behavior, failure modes and regressions. Do not claim tests passed without running them.
-6. Run the applicable Gradle, lint, test and device checks available in the environment. Report exact commands and results.
-7. Summarize changed files, behavior, risks, evidence, and any checks that could not be run.
-
-## Domain-specific checks
-- Use the official Android/Kotlin API contracts and the repository’s established patterns.
-- Verify edge cases, lifecycle correctness, cancellation, accessibility and testability where applicable.
+1. Separate untrusted PR validation from jobs with signing or publication credentials. Use least-privilege job permissions and do not expose secrets to fork-controlled build scripts.
+2. Pin the intended JDK/SDK/toolchain and run relevant lint, JVM and device checks. Cache dependencies without caching credentials; preserve reports on failures.
+3. Identify artifacts by commit/variant and preserve mapping/symbol outputs. Gate publishing separately from validation; define retry behavior so a retried job cannot accidentally duplicate a release action.
 
 ## Verification evidence
-- Changed paths and rationale.
-- Commands run with pass/fail/not-run status.
-- Tests added or updated, with uncovered risks.
-- No fabricated benchmark, security, device or release results.
+Run a branch pipeline with a deliberately failing check and verify the job fails while retaining reports. Inspect fork/secret conditions and release gates without publishing or revealing secrets.
+Record the exact command or manual procedure, candidate/build and environment, observed result, and evidence location. Mark unavailable checks as not run; never invent device, benchmark, security or release outcomes.
 
 ## References
-- https://developer.android.com/
-- https://developer.android.com/topic/architecture
-- https://developer.android.com/training/testing
+Read the [topic-specific official guidance](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions) for APIs and version-sensitive details relevant to the installed toolchain.

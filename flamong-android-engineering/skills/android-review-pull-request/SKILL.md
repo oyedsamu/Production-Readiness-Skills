@@ -1,32 +1,20 @@
 ---
 name: android-review-pull-request
-description: Use when working on Android review pull request, implementing or reviewing related Kotlin, Compose, Gradle, or Android application behavior.
+description: Review an Android pull request for actionable correctness, security, lifecycle and test gaps; read-only by default.
 ---
 # Review Pull Request
 
-## Goal
-Deliver correct, maintainable Android changes with evidence, not unsupported completion claims.
+## Scope
+Start in read-only assessment mode. Do not edit project files, install new dependencies in the target checkout, or remediate findings unless the user requests those actions. Existing safe checks and isolated reproductions are allowed. A review request does not authorize posting to external services or publication.
 
 ## Workflow
-1. Inspect the existing repository, its modules, build configuration, conventions and relevant tests before proposing changes.
-2. Identify the user-visible requirement, constraints, affected layers, compatibility needs and security implications.
-3. Prefer the smallest coherent implementation that follows existing project conventions. Document deviations and trade-offs.
-4. Implement explicit error, loading, empty, cancellation and recovery behavior where relevant. Avoid silently swallowing failures.
-5. Add focused automated tests for new behavior, failure modes and regressions. Do not claim tests passed without running them.
-6. Run the applicable Gradle, lint, test and device checks available in the environment. Report exact commands and results.
-7. Summarize changed files, behavior, risks, evidence, and any checks that could not be run.
-
-## Domain-specific checks
-- Use the official Android/Kotlin API contracts and the repository’s established patterns.
-- Verify edge cases, lifecycle correctness, cancellation, accessibility and testability where applicable.
+1. Read the current diff and affected callers, tests, manifests and build configuration. Evaluate new behavior against the requested change rather than redesigning the application.
+2. Trace changed state transitions, lifecycle ownership, coroutine cancellation and data/security boundaries. Validate suspected defects with existing checks or an isolated reproduction without editing the checkout.
+3. Report only actionable findings with severity, path/line, trigger, consequence and a concrete fix direction. Identify missing test evidence separately from proven defects; do not implement fixes unless requested.
 
 ## Verification evidence
-- Changed paths and rationale.
-- Commands run with pass/fail/not-run status.
-- Tests added or updated, with uncovered risks.
-- No fabricated benchmark, security, device or release results.
+Return prioritized findings or an explicit no-findings result with checks run and limitations. Do not post comments, request changes on GitHub, or edit the branch unless the user authorized that action.
+Record the exact command or manual procedure, candidate/build and environment, observed result, and evidence location. Mark unavailable checks as not run; never invent device, benchmark, security or release outcomes.
 
 ## References
-- https://developer.android.com/
-- https://developer.android.com/topic/architecture
-- https://developer.android.com/training/testing
+Read the [topic-specific official guidance](https://developer.android.com/training/testing) for APIs and version-sensitive details relevant to the installed toolchain.

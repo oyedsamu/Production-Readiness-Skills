@@ -1,32 +1,20 @@
 ---
 name: android-persistence
-description: Use when working on Android persistence, implementing or reviewing related Kotlin, Compose, Gradle, or Android application behavior.
+description: Implement or change Android local database schemas, transactions, queries or preferences with data compatibility checks.
 ---
 # Persistence
 
-## Goal
-Deliver correct, maintainable Android changes with evidence, not unsupported completion claims.
+## Scope
+Follow the user’s requested mode: inspection stays read-only; implementation changes only the requested behavior. Preserve existing project conventions and prior authorization. Publishing, production changes and external messages require their own authorization.
 
 ## Workflow
-1. Inspect the existing repository, its modules, build configuration, conventions and relevant tests before proposing changes.
-2. Identify the user-visible requirement, constraints, affected layers, compatibility needs and security implications.
-3. Prefer the smallest coherent implementation that follows existing project conventions. Document deviations and trade-offs.
-4. Implement explicit error, loading, empty, cancellation and recovery behavior where relevant. Avoid silently swallowing failures.
-5. Add focused automated tests for new behavior, failure modes and regressions. Do not claim tests passed without running them.
-6. Run the applicable Gradle, lint, test and device checks available in the environment. Report exact commands and results.
-7. Summarize changed files, behavior, risks, evidence, and any checks that could not be run.
-
-## Domain-specific checks
-- Use the official Android/Kotlin API contracts and the repository’s established patterns.
-- Verify edge cases, lifecycle correctness, cancellation, accessibility and testability where applicable.
+1. Inspect schema versions and existing installations before changing entities. Define an explicit migration; do not use destructive fallback for user data without an accepted product decision.
+2. Use transactions for related writes and define uniqueness and conflict behavior. Keep blocking database work off the UI thread and observe updates from the intended source of truth.
+3. Distinguish small preferences from relational data. Test logout cleanup and account separation for stored records; avoid storing secrets in ordinary preferences.
 
 ## Verification evidence
-- Changed paths and rationale.
-- Commands run with pass/fail/not-run status.
-- Tests added or updated, with uncovered risks.
-- No fabricated benchmark, security, device or release results.
+Open a fixture created with the previous schema, run the migration and compare retained records. Interrupt a multi-write operation and verify atomicity; exercise duplicate insertion and account switching.
+Record the exact command or manual procedure, candidate/build and environment, observed result, and evidence location. Mark unavailable checks as not run; never invent device, benchmark, security or release outcomes.
 
 ## References
-- https://developer.android.com/
-- https://developer.android.com/topic/architecture
-- https://developer.android.com/training/testing
+Read the [topic-specific official guidance](https://developer.android.com/training/data-storage/room/migrating-db-versions) for APIs and version-sensitive details relevant to the installed toolchain.

@@ -1,32 +1,20 @@
 ---
 name: android-offline-sync
-description: Use when working on Android offline sync, implementing or reviewing related Kotlin, Compose, Gradle, or Android application behavior.
+description: Implement or debug Android offline reads, queued writes, reconciliation and conflict handling.
 ---
 # Offline Sync
 
-## Goal
-Deliver correct, maintainable Android changes with evidence, not unsupported completion claims.
+## Scope
+Follow the user’s requested mode: inspection stays read-only; implementation changes only the requested behavior. Preserve existing project conventions and prior authorization. Publishing, production changes and external messages require their own authorization.
 
 ## Workflow
-1. Inspect the existing repository, its modules, build configuration, conventions and relevant tests before proposing changes.
-2. Identify the user-visible requirement, constraints, affected layers, compatibility needs and security implications.
-3. Prefer the smallest coherent implementation that follows existing project conventions. Document deviations and trade-offs.
-4. Implement explicit error, loading, empty, cancellation and recovery behavior where relevant. Avoid silently swallowing failures.
-5. Add focused automated tests for new behavior, failure modes and regressions. Do not claim tests passed without running them.
-6. Run the applicable Gradle, lint, test and device checks available in the environment. Report exact commands and results.
-7. Summarize changed files, behavior, risks, evidence, and any checks that could not be run.
-
-## Domain-specific checks
-- Define source of truth, conflict resolution, idempotency, retries and deletion semantics.
-- Test airplane mode, process death, duplicate work and eventual reconciliation.
+1. Define the local source of truth, pending-write representation and conflict policy. Persist intent before acknowledging a durable offline action.
+2. Give retryable writes stable identifiers and server-supported idempotency. Define deletion/tombstone behavior and account ownership so stale work cannot recreate deleted records or cross accounts.
+3. Use persistent scheduling when work must survive process death. Bound retries and distinguish conflicts or permanent rejection from transient connectivity failures.
 
 ## Verification evidence
-- Changed paths and rationale.
-- Commands run with pass/fail/not-run status.
-- Tests added or updated, with uncovered risks.
-- No fabricated benchmark, security, device or release results.
+Queue a change offline, restart the process, reconnect and redeliver the same work. Assert one server effect, correct local reconciliation, and no deleted-record resurrection or cross-account replay.
+Record the exact command or manual procedure, candidate/build and environment, observed result, and evidence location. Mark unavailable checks as not run; never invent device, benchmark, security or release outcomes.
 
 ## References
-- https://developer.android.com/
-- https://developer.android.com/topic/architecture
-- https://developer.android.com/training/testing
+Read the [topic-specific official guidance](https://developer.android.com/topic/architecture/data-layer/offline-first) for APIs and version-sensitive details relevant to the installed toolchain.

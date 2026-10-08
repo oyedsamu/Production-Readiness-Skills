@@ -1,32 +1,20 @@
 ---
 name: android-dependency-upgrades
-description: Use when working on Android dependency upgrades, implementing or reviewing related Kotlin, Compose, Gradle, or Android application behavior.
+description: Upgrade Android libraries or build plugins with compatibility, migration and regression evidence.
 ---
 # Dependency Upgrades
 
-## Goal
-Deliver correct, maintainable Android changes with evidence, not unsupported completion claims.
+## Scope
+Follow the user’s requested mode: inspection stays read-only; implementation changes only the requested behavior. Preserve existing project conventions and prior authorization. Publishing, production changes and external messages require their own authorization.
 
 ## Workflow
-1. Inspect the existing repository, its modules, build configuration, conventions and relevant tests before proposing changes.
-2. Identify the user-visible requirement, constraints, affected layers, compatibility needs and security implications.
-3. Prefer the smallest coherent implementation that follows existing project conventions. Document deviations and trade-offs.
-4. Implement explicit error, loading, empty, cancellation and recovery behavior where relevant. Avoid silently swallowing failures.
-5. Add focused automated tests for new behavior, failure modes and regressions. Do not claim tests passed without running them.
-6. Run the applicable Gradle, lint, test and device checks available in the environment. Report exact commands and results.
-7. Summarize changed files, behavior, risks, evidence, and any checks that could not be run.
-
-## Domain-specific checks
-- Use the official Android/Kotlin API contracts and the repository’s established patterns.
-- Verify edge cases, lifecycle correctness, cancellation, accessibility and testability where applicable.
+1. Record the current dependency graph, proposed versions and official release notes. Check Kotlin, AGP, Gradle, JDK and Android API compatibility as a connected toolchain.
+2. Change the smallest compatible set and explain transitive changes. Apply documented migrations instead of suppressing compile or runtime warnings blindly.
+3. Exercise the features using the upgraded APIs in relevant build variants, including minified code when reflection or serialization is involved. Keep a revert path and avoid unrelated bulk upgrades.
 
 ## Verification evidence
-- Changed paths and rationale.
-- Commands run with pass/fail/not-run status.
-- Tests added or updated, with uncovered risks.
-- No fabricated benchmark, security, device or release results.
+Compare resolved dependency graphs and run affected compile/lint/tests plus a release-like smoke test where needed. Report behavioral migrations and any device/API coverage gap.
+Record the exact command or manual procedure, candidate/build and environment, observed result, and evidence location. Mark unavailable checks as not run; never invent device, benchmark, security or release outcomes.
 
 ## References
-- https://developer.android.com/
-- https://developer.android.com/topic/architecture
-- https://developer.android.com/training/testing
+Read the [topic-specific official guidance](https://developer.android.com/build/releases/gradle-plugin) for APIs and version-sensitive details relevant to the installed toolchain.

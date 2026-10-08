@@ -1,33 +1,20 @@
 ---
 name: android-architecture
-description: Use when working on Android architecture, implementing or reviewing related Kotlin, Compose, Gradle, or Android application behavior.
+description: Choose or review Android layer boundaries and dependency direction for a feature or architectural change.
 ---
 # Architecture
 
-## Goal
-Deliver correct, maintainable Android changes with evidence, not unsupported completion claims.
+## Scope
+Follow the user’s requested mode: inspection stays read-only; implementation changes only the requested behavior. Preserve existing project conventions and prior authorization. Publishing, production changes and external messages require their own authorization.
 
 ## Workflow
-1. Inspect the existing repository, its modules, build configuration, conventions and relevant tests before proposing changes.
-2. Identify the user-visible requirement, constraints, affected layers, compatibility needs and security implications.
-3. Prefer the smallest coherent implementation that follows existing project conventions. Document deviations and trade-offs.
-4. Implement explicit error, loading, empty, cancellation and recovery behavior where relevant. Avoid silently swallowing failures.
-5. Add focused automated tests for new behavior, failure modes and regressions. Do not claim tests passed without running them.
-6. Run the applicable Gradle, lint, test and device checks available in the environment. Report exact commands and results.
-7. Summarize changed files, behavior, risks, evidence, and any checks that could not be run.
-
-## Domain-specific checks
-- Keep dependency direction explicit; separate UI, domain and data when complexity justifies it. Avoid mandatory layers without business value.
-- Prevent Android framework types from leaking into pure domain models.
-- Enforce boundaries with module dependencies and automated checks.
+1. Identify the feature entry points and trace one operation through UI, state holder, business logic and data sources. Draw the actual dependency direction before adding layers.
+2. Keep domain contracts independent of Android types when a pure domain boundary is useful. Put implementations behind the owning contract; avoid adding use cases that only forward calls.
+3. Inspect module dependencies for cycles and implementation leakage; preserve the existing architecture unless the requested change requires a documented deviation.
 
 ## Verification evidence
-- Changed paths and rationale.
-- Commands run with pass/fail/not-run status.
-- Tests added or updated, with uncovered risks.
-- No fabricated benchmark, security, device or release results.
+Compile the affected modules and test a business operation without starting the UI. Record the dependency edges checked and any framework dependency that remains intentional.
+Record the exact command or manual procedure, candidate/build and environment, observed result, and evidence location. Mark unavailable checks as not run; never invent device, benchmark, security or release outcomes.
 
 ## References
-- https://developer.android.com/
-- https://developer.android.com/topic/architecture
-- https://developer.android.com/training/testing
+Read the [topic-specific official guidance](https://developer.android.com/topic/architecture) for APIs and version-sensitive details relevant to the installed toolchain.

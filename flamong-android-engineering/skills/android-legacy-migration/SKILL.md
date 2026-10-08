@@ -1,32 +1,20 @@
 ---
 name: android-legacy-migration
-description: Use when working on Android legacy migration, implementing or reviewing related Kotlin, Compose, Gradle, or Android application behavior.
+description: Migrate an Android implementation incrementally while preserving existing behavior and a rollback path.
 ---
 # Legacy Migration
 
-## Goal
-Deliver correct, maintainable Android changes with evidence, not unsupported completion claims.
+## Scope
+Follow the user’s requested mode: inspection stays read-only; implementation changes only the requested behavior. Preserve existing project conventions and prior authorization. Publishing, production changes and external messages require their own authorization.
 
 ## Workflow
-1. Inspect the existing repository, its modules, build configuration, conventions and relevant tests before proposing changes.
-2. Identify the user-visible requirement, constraints, affected layers, compatibility needs and security implications.
-3. Prefer the smallest coherent implementation that follows existing project conventions. Document deviations and trade-offs.
-4. Implement explicit error, loading, empty, cancellation and recovery behavior where relevant. Avoid silently swallowing failures.
-5. Add focused automated tests for new behavior, failure modes and regressions. Do not claim tests passed without running them.
-6. Run the applicable Gradle, lint, test and device checks available in the environment. Report exact commands and results.
-7. Summarize changed files, behavior, risks, evidence, and any checks that could not be run.
-
-## Domain-specific checks
-- Use the official Android/Kotlin API contracts and the repository’s established patterns.
-- Verify edge cases, lifecycle correctness, cancellation, accessibility and testability where applicable.
+1. Capture current behavior and callers with characterization tests before replacing a framework, state model or module boundary.
+2. Choose one migration seam and a reversible slice. Keep old and new callers interoperable during rollout; avoid coupling unrelated dependency upgrades to the migration.
+3. Compare persisted data, navigation state and lifecycle behavior across old and new implementations. Remove the old path only after callers and compatibility checks are accounted for.
 
 ## Verification evidence
-- Changed paths and rationale.
-- Commands run with pass/fail/not-run status.
-- Tests added or updated, with uncovered risks.
-- No fabricated benchmark, security, device or release results.
+Run characterization tests on both paths, test upgrade from existing app data, and document how to revert the slice without losing user data.
+Record the exact command or manual procedure, candidate/build and environment, observed result, and evidence location. Mark unavailable checks as not run; never invent device, benchmark, security or release outcomes.
 
 ## References
-- https://developer.android.com/
-- https://developer.android.com/topic/architecture
-- https://developer.android.com/training/testing
+Read the [topic-specific official guidance](https://developer.android.com/topic/architecture) for APIs and version-sensitive details relevant to the installed toolchain.

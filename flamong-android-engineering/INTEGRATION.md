@@ -1,17 +1,16 @@
-# Integration validation
+# Integration and revision evidence
 
-Imported from the user-provided `flamong-android-engineering-skills.zip`. All 35 source files were imported from the archive. Trailing whitespace was removed from the 31 skill files; their text is otherwise unchanged. The package contains 31 starter skills; the existing 24 readiness skills remain in the top-level `skills/` catalog.
+The initial package was imported from the user-provided `flamong-android-engineering-skills.zip`, then revised in response to PR review. The original 24 readiness skills and shared references remain unchanged. The nested Android package retains all 31 skill names; skill bodies, descriptions and references now contain focused guidance instead of repeated placeholders.
 
-## Checks performed
+## Validation performed
 
-- All 31 `SKILL.md` files parse as YAML frontmatter with unique names matching their directory names, valid name/description lengths, and nonempty bodies.
-- Every skill includes a goal, workflow, domain-specific checks, and verification evidence. The package README catalog matches all 31 skill directories.
-- Markdown local links resolve, and the package's six distinct external reference URLs returned HTTP 200. This confirms reachability, not the accuracy of linked guidance.
-- The existing repository checks passed: `python scripts/sync_shared.py --check`, `python scripts/validate_skills.py` (24 standalone skills), and `python -m unittest discover -s tests -v` (25 tests).
-- `git diff --check main` passed after removing the archive's trailing whitespace. No original skill or shared reference was changed.
+- The Android package validator checks every nested skill and the linked README catalog, independently of top-level catalog rules.
+- Negative tests cover invalid YAML, duplicate keys, mismatched names, empty descriptions/bodies, missing files, catalog drift, broken/escaping links and symlinks.
+- Existing reference synchronization, top-level skill validation and repository tests remain part of CI.
+- Topic-specific workflows were inspected against the prompts in [SCENARIOS.md](SCENARIOS.md), including read-only review and incomplete release evidence.
 
-## Scope and limitations
+Local verification passed for all 31 skills with the skill-creator checker, both repository validators, shared-reference synchronization, all 36 tests (including 11 Android validation tests), and `git diff --check`. All 27 distinct skill reference URLs returned HTTP 200 after correcting one invalid privacy URL. Link reachability does not establish the accuracy of every linked statement.
 
-This is an imported starter package, separate from the readiness catalog. The existing repository validator checks the top-level catalog; it does not validate this nested package. Import checks were run separately. The starter skills do not include the catalog's `agents/openai.yaml` metadata or packaged technical references.
+## Limits
 
-No Android application build, device test, benchmark, sample agent task, or Android maintainer review was performed. The remaining behavioral and installation checks in [VALIDATION.md](VALIDATION.md) remain pending. This integration does not establish production readiness of the toolkit or any Android application.
+The nested package uses self-contained `SKILL.md` instructions; it does not adopt the readiness catalog's UI metadata and shared-reference packaging contract. No Android application build, device test, benchmark, independent agent execution or maintainer approval has been performed. See [VALIDATION.md](VALIDATION.md) for reproducible commands and pending evaluations.

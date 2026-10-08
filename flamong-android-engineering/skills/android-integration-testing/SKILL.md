@@ -1,32 +1,20 @@
 ---
 name: android-integration-testing
-description: Use when working on Android integration testing, implementing or reviewing related Kotlin, Compose, Gradle, or Android application behavior.
+description: Test Android interactions across real component boundaries such as database, HTTP client, repository and background worker.
 ---
 # Integration Testing
 
-## Goal
-Deliver correct, maintainable Android changes with evidence, not unsupported completion claims.
+## Scope
+Follow the user’s requested mode: inspection stays read-only; implementation changes only the requested behavior. Preserve existing project conventions and prior authorization. Publishing, production changes and external messages require their own authorization.
 
 ## Workflow
-1. Inspect the existing repository, its modules, build configuration, conventions and relevant tests before proposing changes.
-2. Identify the user-visible requirement, constraints, affected layers, compatibility needs and security implications.
-3. Prefer the smallest coherent implementation that follows existing project conventions. Document deviations and trade-offs.
-4. Implement explicit error, loading, empty, cancellation and recovery behavior where relevant. Avoid silently swallowing failures.
-5. Add focused automated tests for new behavior, failure modes and regressions. Do not claim tests passed without running them.
-6. Run the applicable Gradle, lint, test and device checks available in the environment. Report exact commands and results.
-7. Summarize changed files, behavior, risks, evidence, and any checks that could not be run.
-
-## Domain-specific checks
-- Use the official Android/Kotlin API contracts and the repository’s established patterns.
-- Verify edge cases, lifecycle correctness, cancellation, accessibility and testability where applicable.
+1. Select the integration seam and keep the components under test real while substituting only external services. Use isolated database/files and controlled server responses.
+2. Exercise a complete operation across the boundary, including failure after partial progress. Assert committed data and externally visible effects rather than only mocked calls.
+3. Reset persistent work and test state between cases. Include upgrade, retry or duplicate execution where the integration owns those contracts; avoid live production endpoints.
 
 ## Verification evidence
-- Changed paths and rationale.
-- Commands run with pass/fail/not-run status.
-- Tests added or updated, with uncovered risks.
-- No fabricated benchmark, security, device or release results.
+Run the test twice from clean state and inject a boundary failure. Record final persisted state, request counts and cleanup; distinguish JVM coverage from device-only behavior.
+Record the exact command or manual procedure, candidate/build and environment, observed result, and evidence location. Mark unavailable checks as not run; never invent device, benchmark, security or release outcomes.
 
 ## References
-- https://developer.android.com/
-- https://developer.android.com/topic/architecture
-- https://developer.android.com/training/testing
+Read the [topic-specific official guidance](https://developer.android.com/training/testing) for APIs and version-sensitive details relevant to the installed toolchain.
