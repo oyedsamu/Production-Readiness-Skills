@@ -19,7 +19,7 @@ Deliver correct, maintainable Android changes with evidence, not unsupported com
 ## Domain-specific checks
 - Keep dependency direction explicit; separate UI, domain and data when complexity justifies it. Avoid mandatory layers without business value.
 - Prevent Android framework types from leaking into pure domain models.
-- Enforce boundaries with module dependencies and automated checks. 
+- Enforce boundaries with module dependencies and automated checks.
 
 ## Verification evidence
 - Changed paths and rationale.

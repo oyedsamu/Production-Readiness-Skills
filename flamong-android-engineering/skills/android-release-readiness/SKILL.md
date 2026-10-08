@@ -18,7 +18,7 @@ Deliver correct, maintainable Android changes with evidence, not unsupported com
 
 ## Domain-specific checks
 - Verify signed build, versioning, minification, mapping files, crash reporting, rollout and rollback.
-- Never claim Play Console or production verification without access. 
+- Never claim Play Console or production verification without access.
 
 ## Verification evidence
 - Changed paths and rationale.

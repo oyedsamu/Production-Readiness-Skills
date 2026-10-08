@@ -1,6 +1,6 @@
 # Integration validation
 
-Imported from the user-provided `flamong-android-engineering-skills.zip`. All 35 source files were compared byte for byte with the archive and are unchanged. The package contains 31 starter skills; the existing 24 readiness skills remain in the top-level `skills/` catalog.
+Imported from the user-provided `flamong-android-engineering-skills.zip`. All 35 source files were imported from the archive. Trailing whitespace was removed from the 31 skill files; their text is otherwise unchanged. The package contains 31 starter skills; the existing 24 readiness skills remain in the top-level `skills/` catalog.
 
 ## Checks performed
 
@@ -8,7 +8,7 @@ Imported from the user-provided `flamong-android-engineering-skills.zip`. All 35
 - Every skill includes a goal, workflow, domain-specific checks, and verification evidence. The package README catalog matches all 31 skill directories.
 - Markdown local links resolve, and the package's six distinct external reference URLs returned HTTP 200. This confirms reachability, not the accuracy of linked guidance.
 - The existing repository checks passed: `python scripts/sync_shared.py --check`, `python scripts/validate_skills.py` (24 standalone skills), and `python -m unittest discover -s tests -v` (25 tests).
-- `git diff --check` passed. No original skill or shared reference was changed.
+- `git diff --check main` passed after removing the archive's trailing whitespace. No original skill or shared reference was changed.
 
 ## Scope and limitations
 

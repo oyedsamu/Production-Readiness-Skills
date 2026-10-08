@@ -18,7 +18,7 @@ Deliver correct, maintainable Android changes with evidence, not unsupported com
 
 ## Domain-specific checks
 - Define source of truth, conflict resolution, idempotency, retries and deletion semantics.
-- Test airplane mode, process death, duplicate work and eventual reconciliation. 
+- Test airplane mode, process death, duplicate work and eventual reconciliation.
 
 ## Verification evidence
 - Changed paths and rationale.

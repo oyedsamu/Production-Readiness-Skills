@@ -19,7 +19,7 @@ Deliver correct, maintainable Android changes with evidence, not unsupported com
 ## Domain-specific checks
 - Review OWASP MASVS and MASTG controls proportionate to threat model.
 - Check exported components, deep links, WebViews, storage, logs, credentials, transport and authorization.
-- Never treat client-side controls as a substitute for server-side authorization. 
+- Never treat client-side controls as a substitute for server-side authorization.
 
 ## Verification evidence
 - Changed paths and rationale.

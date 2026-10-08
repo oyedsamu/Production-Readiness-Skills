@@ -18,7 +18,7 @@ Deliver correct, maintainable Android changes with evidence, not unsupported com
 
 ## Domain-specific checks
 - Use the official Android/Kotlin API contracts and the repository’s established patterns.
-- Verify edge cases, lifecycle correctness, cancellation, accessibility and testability where applicable. 
+- Verify edge cases, lifecycle correctness, cancellation, accessibility and testability where applicable.
 
 ## Verification evidence
 - Changed paths and rationale.

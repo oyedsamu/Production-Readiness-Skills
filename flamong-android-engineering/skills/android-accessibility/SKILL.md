@@ -17,7 +17,7 @@ Deliver correct, maintainable Android changes with evidence, not unsupported com
 7. Summarize changed files, behavior, risks, evidence, and any checks that could not be run.
 
 ## Domain-specific checks
-- Check TalkBack semantics, touch targets, contrast, font scaling, focus order and keyboard navigation. 
+- Check TalkBack semantics, touch targets, contrast, font scaling, focus order and keyboard navigation.
 
 ## Verification evidence
 - Changed paths and rationale.

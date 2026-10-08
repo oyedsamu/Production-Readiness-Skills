@@ -18,7 +18,7 @@ Deliver correct, maintainable Android changes with evidence, not unsupported com
 
 ## Domain-specific checks
 - Measure startup, rendering, memory, battery and network impact before optimization.
-- Use Macrobenchmark and Baseline Profiles when supported; compare before/after. 
+- Use Macrobenchmark and Baseline Profiles when supported; compare before/after.
 
 ## Verification evidence
 - Changed paths and rationale.
