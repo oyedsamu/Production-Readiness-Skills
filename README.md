@@ -67,6 +67,10 @@ All five mobile tracks include store packaging and first-session checks: icon le
 
 The backend skill also has conditional checks for Node.js, Python, JVM/Ktor/Spring, Go, .NET, PostgreSQL, Redis, and container deployments. Mobile skills cover platform-specific release requirements within their own packages. All skills include conditional checks for money, health/sensitive records, enterprise/tenancy, logistics, public/editorial content, and AI-assisted workflows.
 
+## Android engineering starter package
+
+The [Flamong Android Engineering Skills starter package](flamong-android-engineering/README.md) adds 31 focused Android engineering skills in a separate directory. It complements `android-app-completion` with implementation workflows and engineering checks. Copy selected folders from `flamong-android-engineering/skills/` into your agent's skills directory; the catalog installation below installs only the original 24 readiness skills. See the package [validation notes](flamong-android-engineering/VALIDATION.md) for its starter status and remaining evaluation.
+
 ## Install
 
 Clone this repository and copy the skill folders you need into your agent's skills directory. For a Codex installation using `~/.codex/skills`:
